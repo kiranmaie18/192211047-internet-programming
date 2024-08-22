@@ -1,0 +1,1051 @@
+<?php 
+include('conn/conn.php'); 
+include('assets/modal.php'); 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Food Recipe</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand ml-5" href="http://localhost/my-food-recipe/index.php">My Food Recipe</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#category">Food Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#food">Food List</a>
+                </li>
+            </ul>   
+            <div class="form-inline my-2 my-lg-0 mr-5">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle link-unstyled" style="text-decoration: none; color: #eee;" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        My Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">View Account</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="home">
+        <div class="main">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="image/bg4.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1 class="caption"><strong>Welcome to My Food Recipe</strong></h1>
+                            <p class="caption caption-p">Create delicious recipes with ease using our interactive web application. Simply input the dishes you intend to cook, along with their corresponding ingredients and step-by-step procedures, to ensure a seamless and delightful cooking experience.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/bg3.jpg" class="d-block w-100" alt="...">d
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1 class="caption"><strong>Learn Web Design</strong></h5>
+                            <p class="caption caption-p">Embark on a journey into the world of web design—a dynamic fusion of creativity and technology. Discover the art of crafting captivating digital experiences through layout, color, and typography. Dive into coding languages like HTML and CSS to bring your imaginative designs to life on the vast canvas of the internet.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="image/bg5.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1 class="caption"><strong>Sourcecodester.com</strong></h1>
+                            <p class="caption caption-p">Visit our free source code website to access a wide range of coding resources, tutorials, and examples.Whether you're a beginner or an experienced developer, our platform offers valuable insights and code snippets to enhance your coding skills. Explore different programming languages, frameworks, and projects to expand your knowledge and create innovative applications. Happy coding!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="image/card1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title text-center"><strong>Ingredients List</strong></h4>
+                                <p class="card-text text-center">This should be detailed and include important information to tell the user how much of each ingredient they should be using.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="image/card2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title text-center"><strong>Foods List</strong></h4>
+                                <p class="card-text text-center">This is typically the name of the food the user will be making when they follow the recipe.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="image/card3.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h4 class="card-title text-center"><strong>Prodedures</strong></h4>
+                                <p class="card-text text-center">These are the steps the user should take and are numbered and ordered chronologically in the way they should be done.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </section>
+
+    <section id="category">
+
+        <!-- Category Area -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="image/breakfast.jpg" class="card-img-top" alt="..." style="height: 240px">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><strong>Breakfast Recipes</strong></h5>
+                            <a class="btn btn-dark btn-block" data-toggle="modal" data-target="#breakfastModal">View List</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="image/lunch.jpg" class="card-img-top" alt="..." style="height: 240px">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><strong>Lunch Recipes</strong></h5>
+                            <a class="btn btn-dark btn-block" data-toggle="modal" data-target="#lunchModal">View List</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="image/dinner.jpg" class="card-img-top" alt="..." style="height: 240px">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><strong>Dinner Recipes</strong></h5>
+                            <a class="btn btn-dark btn-block" data-toggle="modal" data-target="#dinnerModal">View List</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="image/appetizer.jpg" class="card-img-top" alt="..." style="height: 240px">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><strong>Appetizer Recipes</strong></h5>
+                            <a class="btn btn-dark btn-block" data-toggle="modal" data-target="#appetizerModal">View List</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="image/dessert.jpeg" class="card-img-top" alt="..." style="height: 240px">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><strong>Dessert Recipes</strong></h5>
+                            <a class="btn btn-dark btn-block" data-toggle="modal" data-target="#dessertModal">View List</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="image/fastfood.jpg" class="card-img-top" alt="..." style="height: 240px">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"><strong>Fast Food Recipes</strong></h5>
+                            <a class="btn btn-dark btn-block" data-toggle="modal" data-target="#fastFoodModal">View List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        
+    </section>
+
+    <section id="food">
+        <div class="card card-food-list">
+            <h1 class="text-center"><strong>Food Lists</strong></h1>
+            <div class="mt-4">
+                <div class="row">
+                    <div class="col-md-2 mr-auto">
+                        <button type="button" class="btn btn-add-food btn-secondary" data-toggle="modal" data-target="#addRecipeModal">Add Recipe</button>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control p-4" type="text" id="searchInput" placeholder="Search...">
+                    </div>
+                </div>
+            </div>
+
+            
+            <table id="foodListTable" class="table table-responsive mt-4" style="text-align:center;">
+                <thead>
+                    <tr>
+                    <th scope="col" style="width: 5%;">Food ID</th>
+                    <th scope="col" style="width: 10%;">Recipe Image</th>
+                    <th scope="col" style="width: 10%;">Recipe Name</th>
+                    <th scope="col" style="width: 10%;">Category</th>
+                    <th scope="col" style="width: 10%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php 
+                    
+                    $stmt = $conn->prepare("
+                        SELECT * 
+                        FROM 
+                            `tbl_recipe`
+                        LEFT JOIN
+                            `tbl_category` ON
+                            `tbl_recipe`.`tbl_category_id` = `tbl_category`.`tbl_category_id` 
+                        ");
+                    $stmt->execute();
+
+                    $result = $stmt->fetchAll();
+
+                    foreach ($result as $row) {
+                        $recipeID = $row['tbl_recipe_id'];
+                        $categoryID = $row['tbl_category_id'];
+                        $categoryName = $row['category_name'];
+                        $recipeImage = $row['recipe_image'];
+                        $recipeName = $row['recipe_name'];
+                        $recipeIngredients = $row['recipe_ingredients'];
+                        $recipeProcedure = $row['recipe_procedure'];
+                        ?>
+
+                        <tr>
+                            <th id="recipeID-<?= $recipeID ?>"><?php echo $recipeID ?></th>
+                            <td id="recipeImage-<?= $recipeID ?>"><img src="http://localhost/my-food-recipe/uploads/<?php echo $recipeImage ?>" class="img-fluid" style="height: 50px; width: 90px" alt="Recipe Image"></td>
+                            <td id="recipeName-<?= $recipeID ?>"><?php echo $recipeName ?></td>
+                            <td id="categoryName-<?= $recipeID ?>"><?php echo $categoryName ?></td>
+                            <td id="recipeIngredients-<?= $recipeID ?>" hidden><?php echo $recipeIngredients ?></td>
+                            <td id="recipeProcedure-<?= $recipeID ?>" hidden><?php echo $recipeProcedure ?></td>
+                           
+                            <td>
+                                <button type="button" onclick="view_recipe('<?php echo $recipeID ?>')" title="View"><i class="fa-solid fa-list p-1"></i></button>
+                                <button type="button" onclick="update_recipe('<?php echo $recipeID ?>')" title="Edit"><i class="fa-solid fa-pencil p-1"></i></button>
+                                <button type="button" onclick="delete_recipe('<?php echo $recipeID ?>')" title="Delete"><i class="fa-solid fa-trash p-1"></i></button>
+                            </td>
+                        </tr>
+
+                        <?php
+                    }
+                    ?>
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+    
+    
+    <script src="assets/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>
+<!-- Breakfast Modal -->
+<div class="modal fade mt-5" id="breakfastModal" tabindex="-1" aria-labelledby="breakfast" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="breakfast"><strong>Breakfast Recipes</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row modal-body">
+            
+            <?php 
+            
+                $stmt = $conn->prepare("SELECT * FROM `tbl_recipe` LEFT JOIN `tbl_category` ON `tbl_recipe`.`tbl_category_id` = `tbl_category`.`tbl_category_id` WHERE `category_name` = 'Breakfast' ");
+                $stmt->execute();
+                
+                $result = $stmt->fetchAll();
+
+                foreach ($result as $row) {
+                    $recipeID = $row['tbl_recipe_id'];
+                    $categoryName = $row['category_name'];
+                    $recipeImage = $row['recipe_image'];
+                    $recipeName = $row['recipe_name'];
+                    ?>
+                    <div class="card" style="width:185px; height:200px; margin: 20px">
+                        <div class="d-flex justify-content-center align-items-center" style="max-height: 120px;">
+                            <img  src="http://localhost/my-food-recipe/uploads/<?php echo $recipeImage ?>" class="card-img-top mt-1" alt="Recipe" style="max-width: 120px; max-height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title text-center"><strong><?php echo $recipeName ?></strong></h6>
+                            <i class="text-muted">Category: </i><i class="card-subtitle text-muted"><?php echo $categoryName ?></i><br>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+            ?>
+
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lunch Modal -->
+<div class="modal fade mt-5" id="lunchModal" tabindex="-1" aria-labelledby="lunch" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="lunch"><strong>Lunch Recipes</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row modal-body">
+            
+            <?php 
+            
+                $stmt = $conn->prepare("SELECT * FROM `tbl_recipe` LEFT JOIN `tbl_category` ON `tbl_recipe`.`tbl_category_id` = `tbl_category`.`tbl_category_id` WHERE `category_name` = 'Lunch' ");
+                $stmt->execute();
+                
+                $result = $stmt->fetchAll();
+
+                foreach ($result as $row) {
+                    $recipeID = $row['tbl_recipe_id'];
+                    $categoryName = $row['category_name'];
+                    $recipeImage = $row['recipe_image'];
+                    $recipeName = $row['recipe_name'];
+                    ?>
+
+                    <div class="card" style="width:185px; height:200px; margin: 20px">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 120px;">
+                            <img  src="http://localhost/my-food-recipe/uploads/<?php echo $recipeImage ?>" class="card-img-top mt-1" alt="Recipe" style="max-width: 120px; max-height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title text-center"><strong><?php echo $recipeName ?></strong></h6>
+                            <i class="text-muted">Category: </i><i class="card-subtitle text-muted"><?php echo $categoryName ?></i><br>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+            ?>
+
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Dinner Modal -->
+    <div class="modal fade mt-5" id="dinnerModal" tabindex="-1" aria-labelledby="dinner" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="dinner"><strong>Dinner Recipes</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row modal-body">
+            
+            <?php 
+            
+                $stmt = $conn->prepare("SELECT * FROM `tbl_recipe` LEFT JOIN `tbl_category` ON `tbl_recipe`.`tbl_category_id` = `tbl_category`.`tbl_category_id` WHERE `category_name` = 'Dinner' ");
+                $stmt->execute();
+                
+                $result = $stmt->fetchAll();
+
+                foreach ($result as $row) {
+                    $recipeID = $row['tbl_recipe_id'];
+                    $categoryName = $row['category_name'];
+                    $recipeImage = $row['recipe_image'];
+                    $recipeName = $row['recipe_name'];
+                    ?>
+
+                    <div class="card" style="width: 185px;; height:200px; margin: 20px">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 120px;">
+                            <img  src="http://localhost/my-food-recipe/uploads/<?php echo $recipeImage ?>" class="card-img-top mt-1" alt="Recipe" style="max-width: 120px; max-height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title text-center"><strong><?php echo $recipeName ?></strong></h6>
+                            <i class="text-muted">Category: </i><i class="card-subtitle text-muted"><?php echo $categoryName ?></i><br>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+            ?>
+
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Appetizer Modal -->
+<div class="modal fade mt-5" id="appetizerModal" tabindex="-1" aria-labelledby="appetizer" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="appetizer"><strong>Appetizer Recipes</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row modal-body">
+            
+            <?php 
+            
+                $stmt = $conn->prepare("SELECT * FROM `tbl_recipe` LEFT JOIN `tbl_category` ON `tbl_recipe`.`tbl_category_id` = `tbl_category`.`tbl_category_id` WHERE `category_name` = 'Appetizer' ");
+                $stmt->execute();
+                
+                $result = $stmt->fetchAll();
+
+                foreach ($result as $row) {
+                    $recipeID = $row['tbl_recipe_id'];
+                    $categoryName = $row['category_name'];
+                    $recipeImage = $row['recipe_image'];
+                    $recipeName = $row['recipe_name'];
+                    ?>
+
+                    <div class="card" style="width:200px; height: 185px;; margin: 20px">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 120px;">
+                            <img  src="http://localhost/my-food-recipe/uploads/<?php echo $recipeImage ?>" class="card-img-top mt-1" alt="Recipe" style="max-width: 120px; max-height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title text-center"><strong><?php echo $recipeName ?></strong></h6>
+                            <i class="text-muted">Category: </i><i class="card-subtitle text-muted"><?php echo $categoryName ?></i><br>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+            ?>
+
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dessert Modal -->
+<div class="modal fade mt-5" id="dessertModal" tabindex="-1" aria-labelledby="dessert" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="dessert"><strong>Dessert Recipes</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row modal-body">
+            
+            <?php 
+            
+                $stmt = $conn->prepare("SELECT * FROM `tbl_recipe` LEFT JOIN `tbl_category` ON `tbl_recipe`.`tbl_category_id` = `tbl_category`.`tbl_category_id` WHERE `category_name` = 'Dessert' ");
+                $stmt->execute();
+                
+                $result = $stmt->fetchAll();
+
+                foreach ($result as $row) {
+                    $recipeID = $row['tbl_recipe_id'];
+                    $categoryName = $row['category_name'];
+                    $recipeImage = $row['recipe_image'];
+                    $recipeName = $row['recipe_name'];
+                    ?>
+
+                    <div class="card" style="width: 185px;; height:200px; margin: 20px">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 120px;">
+                            <img  src="http://localhost/my-food-recipe/uploads/<?php echo $recipeImage ?>" class="card-img-top mt-1" alt="Recipe" style="max-width: 120px; max-height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title text-center"><strong><?php echo $recipeName ?></strong></h6>
+                            <i class="text-muted">Category: </i><i class="card-subtitle text-muted"><?php echo $categoryName ?></i><br>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+            ?>
+
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fast Food Modal -->
+<div class="modal fade mt-5" id="fastFoodModal" tabindex="-1" aria-labelledby="fastFood" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="fastFood"><strong>Fast Food Recipes</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row modal-body">
+            
+            <?php 
+            
+                $stmt = $conn->prepare("SELECT * FROM `tbl_recipe` LEFT JOIN `tbl_category` ON `tbl_recipe`.`tbl_category_id` = `tbl_category`.`tbl_category_id` WHERE `category_name` = 'Fast Food' ");
+                $stmt->execute();
+                
+                $result = $stmt->fetchAll();
+
+                foreach ($result as $row) {
+                    $recipeID = $row['tbl_recipe_id'];
+                    $categoryName = $row['category_name'];
+                    $recipeImage = $row['recipe_image'];
+                    $recipeName = $row['recipe_name'];
+                    ?>
+
+                    <div class="card" style="width:185px; height:200px; margin: 20px">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 120px;">
+                            <img  src="http://localhost/my-food-recipe/uploads/<?php echo $recipeImage ?>" class="card-img-top mt-1" alt="Recipe" style="max-width: 120px; max-height: 180px;">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title text-center"><strong><?php echo $recipeName ?></strong></h6>
+                            <i class="text-muted">Category: </i><i class="card-subtitle text-muted"><?php echo $categoryName ?></i><br>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+            ?>
+
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOD LISTS MODALS -->
+
+ <!-- Add Recipe Modal -->
+<div class="modal fade mt-5" id="addRecipeModal" tabindex="-1" aria-labelledby="addRecipe" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addRecipe"><strong>Add Recipe</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="recipeID" action="endpoint/add-recipe.php" method="POST" enctype="multipart/form-data">
+                    <input type="text" class="form-control" id="table" name="table" value="tbl_recipe" hidden>
+                    <div class="mb-3" hidden>
+                        <label for="recipeID" class="form-label">Recipe ID</label>
+                        <input type="text" class="form-control" id="recipeID" name="tbl_recipe_id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeImage" class="form-label">Recipe Image</label>
+                        <input type="file" class="form-control" id="recipeImage" name="recipe_image" style="border:none;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeName" class="form-label">Recipe Name</label>
+                        <input type="text" class="form-control" id="recipeName" name="recipe_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipeCategory" class="form-label">Category</label>
+
+                        <?php 
+                        
+                            $stmt = $conn->prepare("SELECT * FROM `tbl_category`");
+                            $stmt->execute();
+
+                            $recipe_category = $stmt->fetchAll();
+
+                        ?>
+
+                        <select class="form-control" name="tbl_category_id" id="recipeCategory">
+
+                            <option value="">- select -</option>
+                            
+                            <?php foreach ($recipe_category as $category) {
+                                ?>
+                                
+                                <option value="<?php echo $category['tbl_category_id']; ?>"><?php echo $category['category_name'] ?></option>
+                                
+                                <?php    
+                            }?>
+
+                        </select>
+
+                    </div>
+                    <div>
+                        <label for="recipeIngredients" class="form-label">Ingredients</label>
+                        <textarea class="form-control" name="recipe_ingredients" id="recipeIngredients" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <label for="recipeProcedure" class="form-label">Procedure</label>
+                        <textarea class="form-control" name="recipe_procedure" id="recipeProcedure" rows="5"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Recipe Modal -->
+<div class="modal fade mt-5" id="viewRecipeModal" tabindex="-1" aria-labelledby="viewRecipe" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="viewRecipe"><strong>My Recipe</strong></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+        <div class="card">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="" id="viewRecipeImage" class="card-img-top mt-2" alt="Recipe" style="max-width: 300px">
+            </div>
+            <div class="card-body text-center">
+                <h6 class="card-title"><strong id="viewRecipeName"></strong></h6>
+                <p class="text-muted">Category: <span class="card-subtitle text-muted" id="viewCategoryName"></span></p>
+            </div>
+            <div class="row text-center mb-5 p-3">
+                <div class="col">
+                    <h5><strong>Ingredients:</strong></h5>
+                    <p id="viewRecipeIngredients"></p>
+                </div>
+                <div class="col">
+                    <h5><strong>Procedure:</strong></h5>
+                    <p id="viewRecipeProcedure"></p>
+                </div>
+            </div>
+        </div>
+
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Recipe Modal -->
+<div class="modal fade mt-5" id="updateRecipeModal" tabindex="-1" aria-labelledby="updateRecipe" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateRecipe"><strong>Update Recipe</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="recipeID" action="endpoint/update-recipe.php" method="POST" enctype="multipart/form-data">
+                    <input type="text" class="form-control" id="updateTable" name="table" value="tbl_recipe" hidden>
+                    <div class="mb-3" hidden>
+                        <label for="updateRecipeID" class="form-label">Recipe ID</label>
+                        <input type="text" class="form-control" id="updateRecipeID" name="tbl_recipe_id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateRecipeImage" class="form-label">Recipe Image</label>
+                        <input type="file" class="form-control" id="updateRecipeImage" name="recipe_image" style="border:none;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateRecipeName" class="form-label">Recipe Name</label>
+                        <input type="text" class="form-control" id="updateRecipeName" name="recipe_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateRecipeCategory" class="form-label">Category</label>
+
+                        <?php 
+                        
+                            $stmt = $conn->prepare("SELECT * FROM `tbl_category`");
+                            $stmt->execute();
+
+                            $recipe_category = $stmt->fetchAll();
+
+                        ?>
+
+                        <select class="form-control" name="tbl_category_id" id="updateRecipeCategory">
+
+                            <option value="">- select -</option>
+                            
+                            <?php foreach ($recipe_category as $category) {
+                                ?>
+                                
+                                <option value="<?php echo $category['tbl_category_id']; ?>"><?php echo $category['category_name'] ?></option>
+                                
+                                <?php    
+                            }?>
+
+                        </select>
+
+                    </div>
+                    <div>
+                        <label for="updateRecipeIngredients" class="form-label">Ingredients</label>
+                        <textarea class="form-control" name="recipe_ingredients" id="updateRecipeIngredients" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <label for="updateRecipeProcedure" class="form-label">Procedure</label>
+                        <textarea class="form-control" name="recipe_procedure" id="updateRecipeProcedure" rows="5"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+ADD RECIPE
+<?php 
+include('../conn/conn.php');
+
+$recipeName = $_POST['recipe_name'];
+$recipeCategory = $_POST['tbl_category_id'];
+$recipeIngredients = $_POST['recipe_ingredients'];
+$recipeProcedure = $_POST['recipe_procedure'];
+
+// recipe image
+$recipeImageName = $_FILES['recipe_image']['name'];
+$recipeImageTmpName = $_FILES['recipe_image']['tmp_name'];
+
+$target_dir = "../uploads/";
+$target_file = $target_dir . basename($recipeImageName);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+// check if the image is valid
+if (isset($_POST['submit'])) {
+    $check = getimagesize($recipeImageTmpName);
+    if ($check !== false) {
+        $uploadOk = 1;
+    } else {
+        $uploadOk = 0;
+    }
+}
+
+// Check if file already exists
+if (file_exists($target_file)) {
+    $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["recipe_image"]["size"] > 500000) {
+    $uploadOk = 0;
+}
+
+// Allow only certain image formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+    $uploadOk = 0;
+} 
+
+
+// insert of the $uploadOk is 1
+if ($uploadOk == 0) {
+    echo "<script>
+    alert('There\'s a problem with your image, try another image'); 
+    window.location.href = 'http://localhost/my-food-recipe/index.php#food';
+    </script>";
+} else {
+    if (move_uploaded_file($recipeImageTmpName, $target_file)) {
+        $recipeImage = $recipeImageName;
+
+        $stmt = $conn->prepare("INSERT INTO `tbl_recipe` (`tbl_recipe_id`, `tbl_category_id`, `recipe_image`, `recipe_name`, `recipe_ingredients`, `recipe_procedure`) VALUES (NULL, :recipeCategory, :recipeImage, :recipeName, :recipeIngredients, :recipeProcedure)");
+        $stmt->bindParam(':recipeCategory', $recipeCategory);
+        $stmt->bindParam(':recipeImage', $recipeImage);
+        $stmt->bindParam(':recipeName', $recipeName);
+        $stmt->bindParam(':recipeIngredients', $recipeIngredients);
+        $stmt->bindParam(':recipeProcedure', $recipeProcedure);
+
+        $stmt->execute();
+
+        echo "<script>
+        alert('Sucessfully Added'); 
+        window.location.href = 'http://localhost/my-food-recipe/index.php#food';
+        </script>";
+
+    } else {
+        echo "<script>
+        alert('Failed'); 
+        window.location.href = 'http://localhost/my-food-recipe/index.php#food';
+        </script>";
+    }
+}
+
+?>
+DELETE RECIPE
+<?php
+include('../conn/conn.php');
+
+if (isset($_GET['recipe'])) {
+    $recipeID = $_GET['recipe'];
+
+    // Retrieve the book image filename
+    $stmt = $conn->prepare("SELECT `recipe_image` FROM `tbl_recipe` WHERE `tbl_recipe_id` = ?");
+    $stmt->execute([$recipeID]);
+    $row = $stmt->fetch();
+
+    $recipeImage = $row['recipe_image'];
+
+    // Delete the book from the database
+    $stmt = $conn->prepare("DELETE FROM `tbl_recipe` WHERE `tbl_recipe_id` = ?");
+    $stmt->execute([$recipeID]);
+
+    // Delete the associated image file
+    if (!empty($recipeImage)) {
+        $imagePath = "../uploads/" . $recipeImage;
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    }
+
+    // Redirect to the page where you want to display the updated book list
+    echo "<script>
+    alert('Deleted Successfully'); 
+    window.location.href = 'http://localhost/my-food-recipe/index.php#food';
+    </script>";
+    exit();
+}
+?>
+
+UPDATE RECIPE
+<?php
+include('../conn/conn.php');
+
+$recipeID = $_POST['tbl_recipe_id'];
+$updateRecipeName = $_POST['recipe_name'];
+$updateRecipeCategory = $_POST['tbl_category_id'];
+$updateRecipeIngredients = $_POST['recipe_ingredients'];
+$updateRecipeProcedure = $_POST['recipe_procedure'];
+
+// Check if a new image file is uploaded
+if ($_FILES['recipe_image']['tmp_name'] != "") {
+    $targetDir = "../uploads/";
+    $targetFile = $targetDir . basename($_FILES['recipe_image']['name']);
+    move_uploaded_file($_FILES['recipe_image']['tmp_name'], $targetFile);
+
+    // Update the recipe information including the image
+    $stmt = $conn->prepare("UPDATE tbl_recipe SET recipe_name = ?, tbl_category_id = ?, recipe_image = ?, recipe_ingredients = ?, recipe_procedure = ? WHERE tbl_recipe_id = ?");
+    $stmt->execute([$updateRecipeName, $updateRecipeCategory, $_FILES['recipe_image']['name'], $updateRecipeIngredients, $updateRecipeProcedure, $recipeID]);
+} else {
+    // Update the recipe information without changing the image
+    $stmt = $conn->prepare("UPDATE tbl_recipe SET recipe_name = ?, tbl_category_id = ?, recipe_ingredients = ?, recipe_procedure = ? WHERE tbl_recipe_id = ?");
+    $stmt->execute([$updateRecipeName, $updateRecipeCategory, $updateRecipeIngredients, $updateRecipeProcedure, $recipeID]);
+}
+
+// Redirect back to the main page after update
+echo "<script>
+    alert('Updated Successfully'); 
+    window.location.href = 'http://localhost/my-food-recipe/index.php#food';
+    </script>";
+exit();
+?>
+SCRIPT.JS
+// switching section
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// view recipe
+function view_recipe(id) {
+    $("#viewRecipeModal").modal("show");
+
+    let viewRecipeName = $("#recipeName-" + id).text();
+    let viewCategoryName = $("#categoryName-" + id).text();
+    let viewRecipeImage = $("#recipeImage-" + id).find('img').attr('src');
+    let viewRecipeIngredients = $("#recipeIngredients-" + id).text();
+    let viewRecipeProcedure = $("#recipeProcedure-" + id).text();
+
+    // Update the modal content with the fetched data
+    $("#viewRecipeName").text(viewRecipeName);
+    $("#viewCategoryName").text(viewCategoryName);
+    $("#viewRecipeImage").attr('src', viewRecipeImage);
+    $("#viewRecipeIngredients").text(viewRecipeIngredients);
+    $("#viewRecipeProcedure").text(viewRecipeProcedure);
+}
+
+
+// updating recipe 
+function update_recipe(id) {
+    $("#updateRecipeModal").modal("show");
+
+    let updateRecipeID = $("#recipeID-" + id).text();
+    let updateCategoryName = $("#categoryName-" + id).text();
+    let updateRecipeImage = $("#recipeImage-" + id).find('img').attr('src');
+    let updateRecipeName = $("#recipeName-" + id).text();
+    let updateRecipeIngredients = $("#recipeIngredients-" + id).text();
+    let updateRecipeProcedure = $("#recipeProcedure-" + id).text();
+
+    $("#updateRecipeID").val(updateRecipeID);
+    $("#updateRecipeCategory option").each(function() {
+        let category = $(this).text();
+        if (category === updateCategoryName) {
+            $(this).prop("selected", true);
+            return false;
+        }
+    });
+    $("#updateRecipeName").val(updateRecipeName);
+    $("#updateRecipeIngredients").val(updateRecipeIngredients);
+    $("#updateRecipeProcedure").val(updateRecipeProcedure);
+    $("#updateRecipeImage").html(updateRecipeImage);
+}
+
+// delete recipe
+function delete_recipe(id) {
+
+    if (confirm("Do you confirm to delete this recipe?")) {
+        window.location = "endpoint/delete-recipe.php?recipe=" + id
+    }
+}
+
+// search
+function performSearch() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLowerCase();
+    table = document.getElementById("foodListTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        var nameColumn = tr[i].getElementsByTagName("td")[1]; // Column for Recipe Name
+        var categoryColumn = tr[i].getElementsByTagName("td")[2]; // Column for Category
+
+        if (nameColumn || categoryColumn) {
+            var nameText = nameColumn.textContent || nameColumn.innerText;
+            var categoryText = categoryColumn.textContent || categoryColumn.innerText;
+
+            if (nameText.toLowerCase().indexOf(filter) > -1 || categoryText.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+// Attach an event listener to the search input field
+document.getElementById("searchInput").addEventListener("keyup", performSearch);
+
+STYLE.CSS
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(210, 210, 210);
+}
+
+.card {
+    background-color: rgb(240, 240, 240);
+}
+
+.main {
+    height: auto;
+}
+
+
+.carousel-caption {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 45vh;
+    width: 100%;
+    
+}
+
+.caption {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    width: 70%;
+    margin-left: 300px;
+}
+
+
+.caption-p {
+    font-size: 25px;
+}
+
+.carousel-caption {
+    margin-top: -40px;
+}
+
+section {
+    min-height: 100vh;
+}
+
+#category, #food {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card-food-list {
+    width: 80%;
+    height: 800px;
+    border-radius: 20px;
+    border: none;
+    padding: 20px;
+}
+
+.btn-add-food {
+    width: 150px !important;
+    padding: 10px;
+    font-size: 15px;
+}
